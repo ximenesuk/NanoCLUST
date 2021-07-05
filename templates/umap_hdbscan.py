@@ -20,7 +20,7 @@ umap_out = pd.concat([df["read"], df["length"], df_umap], axis=1)
 
 #HDBSCAN
 X = umap_out.loc[:,["D1", "D2"]]
-umap_out["bin_id"] = hdbscan.HDBSCAN(min_cluster_size=int($params.min_cluster_size), cluster_selection_epsilon=int($params.cluster_sel_epsilon)).fit_predict(X)
+umap_out["bin_id"] = hdbscan.HDBSCAN(min_cluster_size=int($params.min_cluster_size), cluster_selection_epsilon=float($params.cluster_sel_epsilon)).fit_predict(X)
 
 #PLOT
 plt.figure(figsize=(20,20))
